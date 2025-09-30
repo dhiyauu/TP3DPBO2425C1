@@ -4,17 +4,19 @@
 Saya Dhiya Ulhaq dengan NIM 2407716 Mengerjakan Tugas Praktikum 3 (Inheritance Lanjutan) dalam Mata Kuliah Desain Pemrograman Berorientasi Objek untuk Keberkahan-Nya Maka Saya Tidak Akan Melakukan Kecurangan Seperti Yang Telah di Spesifikasikan. Aamiin.
 
 ## Desain Diagram
-
+<p align="center">
+<img width="600" alt="RumahSakit drawio" src="https://github.com/user-attachments/assets/f9ecb07e-6a4c-47e4-9919-5e2709896a7a" />
+</p>
 
 ## Penjelasan Atribut dan Methods
 Pada sembilan kelas terdapat beberapa atribut dan methods untuk menyimpan informasi yang membedakan satu objek dengan objek lain, diantaranya:
 
 ### `Person`
-1. id: str – identitas unik orang.
-2. name: str – nama lengkap.
-3. date_of_birth: date – tanggal lahir.
-4. gender: str – jenis kelamin.
-5. contact: str – info kontak (telepon/email).
+1. **id**: str – identitas unik orang.
+2. **name**: str – nama lengkap.
+3. **date_of_birth**: date – tanggal lahir.
+4. **gender**: str – jenis kelamin.
+5. **contact**: str – info kontak (telepon/email).
 
 **Konstruktor Default**
 ```cpp
@@ -41,10 +43,10 @@ Membuat objek `Person` sambil mengisi semua atributnya.
 Membuat Getter yang berfungsi mengambil nilai masing-masing atribut. Sedangkan, Setter berfungsi untuk menetapkan atau mengubah nilai suatu atribut.
 
 ### Patient
-1. medical_record_number: str – nomor rekam medis (unik di RS).
-2. blood_type: Optional[str] – golongan darah (bisa kosong).
-3. complaint: str – keluhan utama.
-4. diagnoses: List[Diagnose] – daftar diagnosis milik pasien. Komposisi (riwayat menempel ke pasien).
+1. **medical_record_number**: str – nomor rekam medis.
+2. **blood_type**: *Optional[str]* – golongan darah (bisa kosong).
+3. **complaint**: str – keluhan utama.
+4. **diagnoses**: *List[Diagnose]* – daftar diagnosis milik pasien.
 
 **Konstruktor Default**
 ```cpp
@@ -65,20 +67,20 @@ Patient::Patient(string pid, string pname, string dob, string g, string c,
 Membuat objek `Patient` sambil mengisi semua atributnya.
 
 **Getter & Setter**
-- Getter: get_medical_record_number(), get_blood_type(), get_complaint(), get_diagnoses() (salinan list).
-- Setter: set_blood_type(blood_type), set_complaint(complaint).
+- Getter: `get_medical_record_number(), get_blood_type(), get_complaint(), get_diagnoses()`.
+- Setter: `set_blood_type(blood_type), set_complaint(complaint)`.
 
 Membuat Getter yang berfungsi mengambil nilai masing-masing atribut. Sedangkan, Setter berfungsi untuk menetapkan atau mengubah nilai suatu atribut.
 
 **Komposisi**
-- add_diagnose(code, name, description="") -> Diagnose – membuat & menambahkan Diagnose baru.
-- remove_diagnose(code) – hapus diagnosa berdasarkan kode.
+- `add_diagnose(code, name, description="")` -> Diagnose – membuat & menambahkan Diagnose baru.
+- `remove_diagnose(code)` – hapus diagnosa berdasarkan kode.
 
 ### Doctor
-1. license_no: str – nomor izin praktik.
-2. specialization: str – spesialisasi (Kardiologi, dll).
-3. schedules: List[Schedule] – jadwal praktik milik dokter. Komposisi (dibuat/di-manage Doctor).
-4. departments: List[Department] – departemen tempat dokter bergabung. Asosiasi many-to-many.
+1. **license_no**: str – nomor izin praktik.
+2. **specialization**: str – spesialisasi (Kardiologi, dll).
+3. **schedules**: *List[Schedule]* – jadwal praktik milik dokter.
+4. **departments**: *List[Department]* – departemen tempat dokter bergabung.
 
 **Konstruktor Default**
 ```cpp
@@ -98,24 +100,24 @@ Doctor::Doctor(string pid, string pname, string dob, string g, string c,
 Membuat objek `Doctor` sambil mengisi semua atributnya.
 
 **Getter & Setter**
-- Getter: get_license_no(), get_specialization(), get_schedules(), get_departments().
-- Setter: set_license_no(license_no), set_specialization(specialization).
+- Getter: `get_license_no(), get_specialization(), get_schedules(), get_departments()`.
+- Setter: `set_license_no(license_no), set_specialization(specialization)`.
 
 Membuat Getter yang berfungsi mengambil nilai masing-masing atribut. Sedangkan, Setter berfungsi untuk menetapkan atau mengubah nilai suatu atribut.
 
 **Komposisi**
-- add_schedule(schedule) – tambah jadwal (hindari duplikat id).
-- remove_schedule_by_id(schedule_id) – hapus jadwal via id.
-- create_schedule(id, day_of_week, start_time, end_time) -> Schedule – buat & simpan jadwal baru.
+- `add_schedule(schedule)` – tambah jadwal.
+- `remove_schedule_by_id(schedule_id)` – hapus jadwal dari id.
+- `create_schedule(id, day_of_week, start_time, end_time)` -> Schedule – buat & simpan jadwal baru.
 
 **Asosiasi Department (M:N)**
-- link_department(department) – kaitkan ke departemen.
-- unlink_department(department) – lepas asosiasi.
+- `link_department(department)` – kaitkan ke departemen.
+- `unlink_department(department)` – lepas asosiasi.
 
 ### AcademicDoctor
-1. research_area: str – bidang riset.
-2. academic_rank: str – jabatan akademik (Lecturer/Assoc. Prof./Prof.).
-3. publications: List[str] – judul publikasi (daftar string).
+1. **research_area**: str – bidang riset.
+2. **academic_rank**: str – jabatan akademik.
+3. **publications**: *List[str]* – judul publikasi.
 
 **Konstruktor Default**
 ```cpp
@@ -136,20 +138,20 @@ AcademicDoctor::AcademicDoctor(string pid, string pname, string dob, string g, s
 Membuat objek `AcademicDoctor` sambil mengisi semua atributnya.
 
 **Getter & Setter**
-- Getter: get_research_area(), get_academic_rank(), get_publications().
-- Setter: set_research_area(research_area), set_academic_rank(rank).
+- Getter: `get_research_area(), get_academic_rank(), get_publications()`.
+- Setter: `set_research_area(research_area), set_academic_rank(rank)`.
 
 Membuat Getter yang berfungsi mengambil nilai masing-masing atribut. Sedangkan, Setter berfungsi untuk menetapkan atau mengubah nilai suatu atribut.
 
-Mutator publikasi
-- add_publication = menambah publikasi
-- remove_publication = menghapus publikasi
+**Mutator publikasi**
+- `add_publication` = menambah publikasi
+- `remove_publication` = menghapus publikasi
 
 ### Nurse
-1. registration_no: str – nomor registrasi perawat.
-2. level: str – level (Junior/Senior).
-3. schedules: List[Schedule] – asosiasi jadwal (bukan komposisi; Nurse tidak “memiliki” jadwal).
-4. departments: List[Department] – asosiasi departemen (M:N mirip dokter).
+1. **registration_no**: str – nomor registrasi perawat.
+2. **level**: str – level (Junior/Senior).
+3. **schedules**: *List[Schedule]* – asosiasi jadwal.
+4. **departments**: *List[Department]* – asosiasi departemen.
 
 **Konstruktor Default**
 ```cpp
@@ -169,26 +171,26 @@ Nurse::Nurse(string pid, string pname, string dob, string g, string c,
 Membuat objek `Nurse` sambil mengisi semua atributnya.
 
 **Getter & Setter**
-- Getter: get_registration_no(), get_level(), get_schedules(), get_departments().
-- Setter: set_registration_no(reg_no), set_level(level).
+- Getter: `get_registration_no(), get_level(), get_schedules(), get_departments()`.
+- Setter: `set_registration_no(reg_no), set_level(level)`.
 
 Membuat Getter yang berfungsi mengambil nilai masing-masing atribut. Sedangkan, Setter berfungsi untuk menetapkan atau mengubah nilai suatu atribut.
 
 **Asosiasi Schedule**
-assign_schedule(schedule) = dipakai untuk menghubungkan sebuah jadwal ke perawat.
-remove_schedule(schedule) = dipakai untuk melepaskan hubungan jadwal dari perawat
+- `assign_schedule(schedule)` = dipakai untuk menghubungkan sebuah jadwal ke perawat.
+- `remove_schedule(schedule)` = dipakai untuk melepaskan hubungan jadwal dari perawat
 
 **Asosiasi Department** 
-link_department(dept) = menghubungkan perawat atau dokter dengan sebuah departemen
-unlink_department(dept) = memutuskan hubungan dengan departemen
+- `link_department(dept)` = menghubungkan perawat atau dokter dengan sebuah departemen
+- `unlink_department(dept)` = memutuskan hubungan dengan departemen
 
 ### Department
-1. id: str – id departemen.
-2. name: str – nama.
-3. location: str – lokasi/ruangan/lantai.
-4. phone: str, email: str – kontak.
-5. doctors: List[Doctor] – daftar dokter terkait (asosiasi M:N).
-6. nurses: List[Nurse] – daftar perawat terkait (asosiasi M:N).
+1. **id**: str – id departemen.
+2. **name**: str – nama.
+3. **location**: str – lokasi/ruangan/lantai.
+4. **phone**: str, email: str – kontak.
+5. **doctors**: *List[Doctor]* – daftar dokter terkait.
+6. **nurses**: *List[Nurse]* – daftar perawat terkait.
 
 **Konstruktor Default**
 ```cpp
@@ -209,24 +211,24 @@ Department::Department(string did, string dname, string loc, string ph, string e
 Membuat objek `Department` sambil mengisi semua atributnya.
 
 **Getter & Setter**
-- Getter: get_id(), get_name(), get_location(), get_phone(), get_email(), get_doctors(), get_nurses().
-- Setter: set_name(name), set_location(location), set_phone(phone), set_email(email).
+- Getter: `get_id(), get_name(), get_location(), get_phone(), get_email(), get_doctors(), get_nurses()`.
+- Setter: `set_name(name), set_location(location), set_phone(phone), set_email(email)`.
 
 Membuat Getter yang berfungsi mengambil nilai masing-masing atribut. Sedangkan, Setter berfungsi untuk menetapkan atau mengubah nilai suatu atribut.
 
 **Asosiasi Doctor**
-- add_doctor(doctor) = menambahkan dokter
-- remove_doctor(doctor) = menghapus dokter
+- `add_doctor(doctor)` = menambahkan dokter
+- `remove_doctor(doctor)` = menghapus dokter
 
 **Asosiasi Nurse**
-- add_nurse(nurse) = menambahkan perawat
-- remove_nurse(nurse) = menghapus perawat
+- `add_nurse(nurse)` = menambahkan perawat
+- `remove_nurse(nurse)` = menghapus perawat
 
 ### Hospital
-1. id: str, name: str, official_code: str, type: str, accreditation: str.
-2. patients: List[Patient] – agregasi (Hospital menyimpan pasien).
-3. doctors: List[Doctor] – agregasi.
-4. departments: List[Department] – agregasi.
+1. **id**: str, name: str, official_code: str, type: str, accreditation: str.
+2. **patients**: *List[Patient]* – agregasi (Hospital menyimpan pasien).
+3. **doctors**: *List[Doctor]* – Menyimpan data dokter (agregasi).
+4. **departments**: *List[Department]* – Menyimpan data departemen (agregasi).
 
 **Konstruktor Default**
 ```cpp
@@ -247,25 +249,27 @@ Hospital::Hospital(string hid, string hname, string code, string htype, string a
 Membuat objek `Hospital` sambil mengisi semua atributnya.
 
 **Getter & Setter**
-- Getter: get_id(), get_name(), get_official_code(), get_type(), get_accreditation(),
-get_patients(), get_doctors(), get_departments().
-- Setter: set_name(name), set_official_code(code), set_type(type), set_accreditation(accreditation).
+- Getter: `get_id(), get_name(), get_official_code(), get_type(), get_accreditation(),
+get_patients(), get_doctors(), get_departments()`.
+- Setter: `set_name(name), set_official_code(code), set_type(type), set_accreditation(accreditation)`.
 
 Membuat Getter yang berfungsi mengambil nilai masing-masing atribut. Sedangkan, Setter berfungsi untuk menetapkan atau mengubah nilai suatu atribut.
 
 **Agregasi**
-- add_patient(patient)
-- remove_patient(patient)
-- add_doctor(doctor) 
-- remove_doctor(doctor)
-- add_department(department) 
-- remove_department(department)
+- `add_patient(patient)`
+- `remove_patient(patient)`
+- `add_doctor(doctor)` 
+- `remove_doctor(doctor)`
+- `add_department(department)` 
+- `remove_department(department)`
+
+Dapat menambah dan menghapus data pasien, dokter, dan departemen.
 
 ### Schedule
-1. id: str – id jadwal.
-2. day_of_week: int – 0..6 (Mon..Sun).
-3. start_time: str – “HH:MM”.
-4. end_time: str – “HH:MM”.
+1. **id**: str – id jadwal.
+2. **day_of_week**: int – 0..6 (Mon..Sun).
+3. **start_time**: str – “HH:MM”.
+4. **end_time**: str – “HH:MM”.
 
 **Konstruktor Default**
 ```cpp
@@ -289,15 +293,15 @@ Schedule::Schedule(string sid, int dow, string start, string end) {
 Membuat objek `Schedule` sambil mengisi semua atributnya.
 
 **Getter & Setter**
-- Getter: get_id(), get_day_of_week(), get_start_time(), get_end_time().
-- Setter: set_day_of_week(day_of_week), set_start_time(start_time), set_end_time(end_time).
+- Getter: `get_id(), get_day_of_week(), get_start_time(), get_end_time()`.
+- Setter: `set_day_of_week(day_of_week), set_start_time(start_time), set_end_time(end_time)`.
 
 Membuat Getter yang berfungsi mengambil nilai masing-masing atribut. Sedangkan, Setter berfungsi untuk menetapkan atau mengubah nilai suatu atribut.
 
 ### Diagnose
-1. code: str – kode diagnosa (ICD/internal).
-2. name: str – nama diagnosa.
-3. description: str – keterangan.
+1. **code**: str – kode diagnosa (ICD/internal).
+2. **name**: str – nama diagnosa.
+3. **description**: str – keterangan.
 
 **Konstruktor Default**
 ```cpp
@@ -316,23 +320,23 @@ Diagnose::Diagnose(string c, string n, string desc) {
 Membuat objek `Diagnose` sambil mengisi semua atributnya.
 
 **Getter & Setter**
-- Getter: get_code(), get_name(), get_description().
-- Setter: set_name(name), set_description(desc).
+- Getter: `get_code(), get_name(), get_description()`.
+- Setter: `set_name(name), set_description(desc)`.
 
 Membuat Getter yang berfungsi mengambil nilai masing-masing atribut. Sedangkan, Setter berfungsi untuk menetapkan atau mengubah nilai suatu atribut.
 
 ## Penjelasan Desain
-Kelas Person dipakai sebagai kelas dasar, sehingga Patient, Doctor, dan Nurse mewarisi (extends) Person karena masing-masing menambah atribut spesifik dari setiap kelas. Lalu, kelas AcademicDoctor tetap mewarisi (extends) seluruh perilaku Doctor sehingga ada tambahan juga pada atribut (`ResearchArea, AcademicRank, Publications[]`).
+Kelas `Person` dipakai sebagai kelas dasar, sehingga `Patient`, `Doctor`, dan `Nurse` mewarisi (*extends*) Person karena masing-masing menambah atribut spesifik dari setiap kelas. Lalu, kelas `AcademicDoctor` tetap mewarisi (*extends*) seluruh perilaku `Doctor` sehingga ada tambahan juga pada atribut (`ResearchArea, AcademicRank, Publications[]`).
 
-Kelas Hospital agregasi dengan banyak kelas agar “memiliki” daftar referensi ke Patient/Doctor/Department, namun sistem objek tidak harus diatur Hospital karena objek bisa hidup di luar Hospital.
+Kelas `Hospital` agregasi dengan banyak kelas agar “memiliki” daftar referensi ke `Patient/Doctor/Department`, namun sistem objek tidak harus diatur `Hospital` karena objek bisa hidup di luar `Hospital`.
 
-Kelas Department memiliki hubungan asosiasi dua arah kepada Doctor dan Nurse misalnya, satu dokter bisa di beberapa departemen dan satu departemen punya banyak dokter, begitupun juga perawat.
+Kelas `Department` memiliki hubungan asosiasi dua arah kepada `Doctor` dan `Nurse` misalnya, satu dokter bisa di beberapa departemen dan satu departemen punya banyak dokter, begitupun juga perawat.
 
-Komposisi kelas Doctor dengan Schedule agar jadwal dimiliki oleh satu dokter dan tidak dibagi dengan dokter lain. Jika dokter dihapus, jadwalnya akan ikut hilang.
+Komposisi kelas `Doctor` dengan `Schedule` agar jadwal dimiliki oleh satu dokter dan tidak dibagi dengan dokter lain. Jika dokter dihapus, jadwalnya akan ikut hilang.
 
-Kelas Nurse dibuat asosiasi dengan Schedule agar jadwal dikelola sistem penjadwalan global (shift mingguan), yang bisa berubah atau dipakai ulang tanpa bergantung pada satu perawat. Perawat dapat dipindahkan jadwal shift jika semisal ada cuti, maka jadwal yang kosong diisi oleh perawat lain tanpa mengubah sistem jadwalnya.
+Kelas `Nurse` dibuat asosiasi dengan `Schedule` agar jadwal dikelola sistem penjadwalan global (shift mingguan), yang bisa berubah atau dipakai ulang tanpa bergantung pada satu perawat. Perawat dapat dipindahkan jadwal shift jika semisal ada cuti, maka jadwal yang kosong diisi oleh perawat lain tanpa mengubah sistem jadwalnya.
 
-Kelas Patient komposisi dengan Diagnose agara rekam medis pasien terhubung dengan pasien. Jika Patient hilang, maka Diagnose nya pun hilang.
+Kelas `Patient` komposisi dengan `Diagnose` agara rekam medis pasien terhubung dengan pasien. Jika Patient hilang, maka Diagnose nya pun hilang.
 
 ## Alur Program
 
@@ -390,4 +394,13 @@ Program mencetak:
 - Detail `Nurse`: ID, regNo, level, jadwal, dan departemen.
 - Detail `Patient`: MRN, golongan darah, keluhan, serta daftar Diagnosa.
 
+
 ## Dokumentasi
+### 1. C++
+<img width="600" alt="cpp" src="https://github.com/user-attachments/assets/a2f30037-4fea-4616-9601-9b6627aa9e4f" />
+
+### 2. Java
+<img width="600" alt="java" src="https://github.com/user-attachments/assets/1ae31d98-91a4-48ee-9d02-4cb680164bc5" />
+
+### 3. Python
+<img width="600" alt="python" src="https://github.com/user-attachments/assets/4fd00196-2dee-4263-82cb-21c4f49e8d3d" />
