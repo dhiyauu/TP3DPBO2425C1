@@ -336,7 +336,7 @@ Komposisi kelas `Doctor` dengan `Schedule` agar jadwal dimiliki oleh satu dokter
 
 Kelas `Nurse` dibuat asosiasi dengan `Schedule` agar jadwal dikelola sistem penjadwalan global (shift mingguan), yang bisa berubah atau dipakai ulang tanpa bergantung pada satu perawat. Perawat dapat dipindahkan jadwal shift jika semisal ada cuti, maka jadwal yang kosong diisi oleh perawat lain tanpa mengubah sistem jadwalnya.
 
-Kelas `Patient` komposisi dengan `Diagnose` agara rekam medis pasien terhubung dengan pasien. Jika Patient hilang, maka Diagnose nya pun hilang.
+Kelas `Patient` komposisi dengan `Diagnose` agar rekam medis pasien terhubung dengan pasien. Jika Patient hilang, maka `Diagnose` nya pun hilang.
 
 ## Alur Program
 
@@ -347,7 +347,7 @@ Hospital hospital("H001", "RS Harapan Bangsa", "RS-001", "Public", "A");
 Dimulai dengan membuatkan objek `Hospital` karena menjadi pusat data yang menyimpan daftar pasien, dokter (sebagai pointer agar polymorphism berjalan), dan departemen.
 Lalu, dibuat 2 `Department` seperti Kardiologi dan Neurologi, setelah itu ditambahkan ke `Hospital`.
 
-### b. Pembuatan Doctor dan AcademicDoctor
+### b. Pembuatan `Doctor` dan `AcademicDoctor`
 Dibuat `Doctor` biasa (doc1) dan `AcademicDoctor` (doc2) yang merupakan turunan `Doctor`.
 `AcademicDoctor` punya atribut tambahan: researchArea, academicRank, dan daftar publications.
 ```cpp
@@ -356,7 +356,7 @@ hospital.addDoctor(&doc2);
 ```
 Kedua dokter dimasukkan ke `Hospital` melalui `addDoctor(&doc1)` dan `addDoctor(&doc2)`. Karena `Hospital` menyimpan `vector<Doctor*>`, agar polymorphism bisa dipakai. Polymorphism dibuat agar dapat menampung berbagai jenis dokter tanpa mengubah kelas `Hospital`.
 
-### c. Jadwal Dokter (Schedule)
+### c. Jadwal Dokter (`Schedule`)
 ```cpp
 doc1.addSchedule(s1);
 doc1.addSchedule(s2);
@@ -364,19 +364,19 @@ doc2.addSchedule(s3);
 ```
 Mwmbuat 3 jadwal `Schedule (s1, s2, s3)`. Lalu, ditambahkan ke masing-masing dokter dengan `addSchedule()`. Ini merupakan hubungan komposisi, karena jadwal dianggap dimiliki oleh dokter.
 
-### d. Pembuatan Nurse dan Schedule Nurse
+### d. Pembuatan `Nurse` dan `Schedule` Nurse
 ```cpp
 nurse1.addSchedule(&sn1);
 nurse2.addSchedule(&sn2);
 ```
 Membuat 2 `Nurse (nurse1, nurse2)` dengan data registrasi dan level. Lalu, dibuat jadwal untuk `Nurse (sn1, sn2)`, kemudian dihubungkan dengan `addSchedule(&sn1)`. Hubungan ini asosiasi karena Nurse tidak memiliki jadwal, hanya mereferensikan.
 
-### e. Hubungan Department dengan Doctor dan Nurse
+### e. Hubungan `Department` dengan `Doctor` dan `Nurse`
 `dep_cardio.addDoctor(&doc1); dep_cardio.addNurse(&nurse1);`
 `dep_neuro.addDoctor(&doc2); dep_neuro.addNurse(&nurse2);`
 Hubungan ini asosiasi many-to-many, karena satu dokter bisa masuk lebih dari satu departemen. Setelah itu, `Department` ditambahkan ke `Hospital`.
 
-### f. Pembuatan Patient dan Diagnose
+### f. Pembuatan `Patient` dan `Diagnose`
 ```cpp
 pat1.addDiagnose(d1);
 pat2.addDiagnose(d2);
