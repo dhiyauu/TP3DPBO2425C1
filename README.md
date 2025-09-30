@@ -326,7 +326,7 @@ Membuat objek `Diagnose` sambil mengisi semua atributnya.
 Membuat Getter yang berfungsi mengambil nilai masing-masing atribut. Sedangkan, Setter berfungsi untuk menetapkan atau mengubah nilai suatu atribut.
 
 ## Penjelasan Desain
-Kelas `Person` dipakai sebagai kelas dasar, sehingga `Patient`, `Doctor`, dan `Nurse` mewarisi (*extends*) Person karena masing-masing menambah atribut spesifik dari setiap kelas. Lalu, kelas `AcademicDoctor` tetap mewarisi (*extends*) seluruh perilaku `Doctor` sehingga ada tambahan juga pada atribut (`ResearchArea, AcademicRank, Publications[]`).
+Kelas `Person` dipakai sebagai kelas dasar, sehingga `Patient`, `Doctor`, dan `Nurse` mewarisi (*extends*) `Person` ini merupakan disebut **Hierarchical Inheritance** karena induk memiliki lebih dari satu anak dan masing-masing menambah atribut spesifik dari setiap kelas. Lalu, kelas `AcademicDoctor` tetap mewarisi (*extends*) seluruh perilaku `Doctor` sehingga ada tambahan juga pada atribut (`ResearchArea, AcademicRank, Publications[]`).
 
 Kelas `Hospital` agregasi dengan banyak kelas agar “memiliki” daftar referensi ke `Patient/Doctor/Department`, namun sistem objek tidak harus diatur `Hospital` karena objek bisa hidup di luar `Hospital`.
 
@@ -404,3 +404,4 @@ Program mencetak:
 
 ### 3. Python
 <img width="600" alt="python" src="https://github.com/user-attachments/assets/4fd00196-2dee-4263-82cb-21c4f49e8d3d" />
+
